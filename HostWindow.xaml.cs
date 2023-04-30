@@ -191,14 +191,14 @@ namespace Messanger
             {
                 client.Shutdown(SocketShutdown.Both);
                 client.Close();
-                clients.Remove(client);
-
-                HostWindow.users.Remove(tcpClient.UserName);
+                clients.Remove(client);      
 
                 foreach (var item in clients)
                 {
                     SendMessage(item, $"User '{tcpClient.UserName}' has left the chat.");
                 }
+
+                HostWindow.users.Remove(tcpClient.UserName);
             }
         }
 
