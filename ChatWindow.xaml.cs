@@ -35,7 +35,7 @@ namespace Messanger
             else
             {
                 DateTime time = DateTime.Now;
-                tcpClient.SendMessage($"[{time.ToShortTimeString()}] {tcpClient.UserName}: {MessegaBox.Text}");
+                tcpClient.SendMessage($"[{time.ToShortTimeString()}] {tcpClient.UserName}: {MessegaBox.Text}", ListMesseges);
                 MessegaBox.Text = "";
             }
         }
@@ -84,10 +84,11 @@ namespace Messanger
             }
         }
 
-        public async Task SendMessage(string message)
+        public async Task SendMessage(string message, ListBox ListMesseges)
         {
             byte[] bytes = Encoding.UTF8.GetBytes(message);
             await server.SendAsync(bytes, SocketFlags.None);
+            ListMesseges.Items.Add($"{message}");
         }
 
         public async Task DisconnectAsync()
