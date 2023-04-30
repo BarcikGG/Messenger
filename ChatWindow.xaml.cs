@@ -38,6 +38,8 @@ namespace Messanger
             {
                 DateTime time = DateTime.Now;
                 tcpClient.SendMessage($"[{time.ToShortTimeString()}] {tcpClient.UserName}: {MessegaBox.Text}");
+
+                ListMesseges.Items.Add($"[{time.ToShortTimeString()}] Вы: {MessegaBox.Text}");
                 MessegaBox.Text = "";
             }
         }
@@ -90,6 +92,8 @@ namespace Messanger
         {
             byte[] bytes = Encoding.UTF8.GetBytes(message);
             await server.SendAsync(bytes, SocketFlags.None);
+
+            
         }
 
         public async Task DisconnectAsync()

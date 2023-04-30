@@ -167,7 +167,7 @@ namespace Messanger
                 }
 
                 string message = Encoding.UTF8.GetString(bytes, 0, bytesRecieved);
-                ListMesseges.Items.Add($"[{client.RemoteEndPoint}]: {message}");
+                ListMesseges.Items.Add($"[{client.RemoteEndPoint}]: \n{message}");
 
                 foreach (var item in clients)
                 {
